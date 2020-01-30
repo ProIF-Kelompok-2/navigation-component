@@ -33,6 +33,7 @@ const webpack = require('webpack')
  */
 module.exports = function configFactory (ops) {
   return {
+    watch: true,
     context: ops.context,
     entry: ops.entry,
     externals: [
