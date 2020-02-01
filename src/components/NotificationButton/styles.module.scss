@@ -3,6 +3,9 @@
 .notificationButton {
   position: relative;
   padding: 10px;
+  background: transparent;
+  border: none;
+  z-index: 101; // do not break HTML semantics!!!
 
   img {
     display: block;
@@ -36,5 +39,9 @@
   &.new.isNotificationsPopupOpen {
     background-color: $gray-hover-profile-icon;
     border-radius: 50%;
-  }  
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
