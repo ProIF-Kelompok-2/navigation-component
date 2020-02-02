@@ -36,12 +36,12 @@
     display: block;
   }
 
-  &.new.isNotificationsPopupOpen {
-    background-color: $gray-hover-profile-icon;
-    border-radius: 50%;
-  }
-
   &:focus {
     outline: none;
+  }
+
+  &.isNotificationsPopupOpen {
+    background-color: $gray-hover-profile-icon;
+    border-radius: 50%;
   }
 }

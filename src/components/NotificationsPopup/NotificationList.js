@@ -4,6 +4,7 @@ import cn from 'classnames'
 import _ from 'lodash'
 import moment from 'moment'
 import styles from './styles.module.scss'
+import IconBell from '../../assets/images/icon-bell.svg'
 
 const LightBar = ({ title, onDismiss }) => (
   <div className={styles['light-bar']}>
@@ -80,19 +81,17 @@ const NotificationList = ({ notifications, onDismiss, onSettings, onClose }) => 
   return (
     <>
       <div className={styles['noti-header']}>
-        <span
-          className={styles['notification-back-btn']}
-          role='button'
-          onClick={onClose}
-        />
-        <span className={styles['left-noti']}>Notifications</span>
+        <div className={styles['noti-title']}>
+          <IconBell />
+          <span className={styles['noti-title-text']}>Notifications</span>
+        </div>
         <div className={styles.rights}>
           <span
             role='button'
             className={styles['white-link']}
             onClick={() => onDismiss(notifications)}
           >
-            Dismiss All
+            Mark All as Read
           </span>
           &nbsp;<span className={styles.point} />&nbsp;
           <span

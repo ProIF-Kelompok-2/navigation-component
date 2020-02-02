@@ -36,6 +36,7 @@ module.exports = function configFactory (ops) {
     optimization: {
       minimize: false
     },
+    watch: true,
     context: ops.context,
     entry: ops.entry,
     externals: [
