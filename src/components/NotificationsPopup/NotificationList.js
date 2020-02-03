@@ -145,7 +145,7 @@ const NotificationList = ({ notifications, onDismiss, onSettings, onClose }) => 
           </Fragment>
         ))}
         <div className={cn(styles['end-message'], styles.center)}>
-          You have no more notifications
+          <a href='#' className={cn(styles['view-noti'])}>View All Notifications</a>
         </div>
       </div>
     </>

@@ -12,10 +12,6 @@ const EmptyNotifications = ({ onClose, emptyTitle, emptyText }) => (
         <IconBell />
         <span className={styles['noti-title-text']}>Notifications</span>
       </div>
-      <div className={styles.rights}>
-        <span className={styles['white-link']} role='button'>Settings</span>
-      </div>
-      <span className={styles['btn-setting']} role='button' />
     </div>
     <div className={cn(styles['noti-body'], styles.center)}>
       <BellBig className={cn(styles.icons, styles['icon-bell'])} />

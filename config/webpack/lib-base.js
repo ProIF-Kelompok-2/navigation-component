@@ -95,39 +95,20 @@ module.exports = function configFactory (ops) {
         include: [
           /src[/\\]assets[/\\]fonts/
         ],
-        loader: 'file-loader',
-        options: {
-          name: './[name].[ext]',
-          outputPath: 'fonts/'
-        }
+        loader: 'url-loader'
       },
       {
         test: /\.(svg)$/,
         include: [
           /src[/\\]assets[/\\]images/
         ],
-        loader: 'file-loader',
-        options: {
-          name: './[name].[ext]',
-          outputPath: 'images/'
-        }
+        loader: 'url-loader'
       },
       {
         // Match woff2 in addition to patterns like .woff?v=1.1.1.
         test: /\.(woff|woff2)$/,
         use: {
-          loader: 'url-loader',
-          options: {
-            // Limit at 20k. Above that it emits separate files
-            limit: 20000,
-
-            // url-loader sets mimetype if it's passed.
-            // Without this it derives it from the file extension
-            mimetype: 'application/font-woff',
-
-            // Output below fonts directory
-            name: 'fonts/[name].[ext]'
-          }
+          loader: 'url-loader'
         }
       },
       {
@@ -150,13 +131,7 @@ module.exports = function configFactory (ops) {
           /src[/\\]assets[/\\]images/
         ],
         use: {
-          loader: 'url-loader',
-          options: {
-            // Limit at 20k. Above that it emits separate files
-            limit: 20000,
-            mimetype: 'image/svg',
-            name: 'images/[name].[ext]'
-          }
+          loader: 'url-loader'
         }
       },
       {

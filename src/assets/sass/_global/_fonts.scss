@@ -19,6 +19,8 @@
 @include font-family('Roboto', 700, normal, 'Roboto Bold', 'Roboto-Bold', '#{$font-path}/roboto-v19-latin/', 'roboto-v19-latin-700');
 @include font-family('Roboto', 400, normal, 'Roboto', 'Roboto-Regular', '#{$font-path}/roboto-v19-latin/', 'roboto-v19-latin-regular');
 @include font-family('Barlow Condensed', 600, normal, 'Barlow Condensed SemiBold', 'BarlowCondensed-SemiBold', '#{$font-path}/barlow-condensed-v3-latin/', 'barlow-condensed-v3-latin-600');
+@include font-family('Barlow SemiBold', 600, normal, 'Barlow SemiBold', 'Barlow-Semi-Bold', '#{$font-path}/Barlow/', 'Barlow-Semi-Bold');
+
 
 @mixin Roboto-Bold {
   font-family: 'Roboto';
@@ -32,5 +34,10 @@
 
 @mixin Barlow-Condensed-SemiBold {
   font-family: 'Barlow Condensed';
+  font-weight: 600;
+}
+
+@mixin Barlow-SemiBold {
+  font-family: 'Barlow SemiBold';
   font-weight: 600;
 }
