@@ -120,5 +120,9 @@
 }
 
 .text-uppercase {
-  text-transform: uppercase;
+  text-transform: uppercase !important;
+}
+
+.font-bold {
+  font-weight: bold !important;
 }

@@ -148,24 +148,45 @@
     .right-remove {
       position: absolute;
       right: 1px;
-      top: 50%;
+      top: 60%;
       margin-top: -10px;
       z-index: 666;
-      display: none;
       .btn-close {
         display: block;
         background: url(#{$img-path}/e-remove.svg) center center no-repeat;
         background-size: 10px;
-        width: 20px;
-        height: 20px;
+        width: 10px;
+        height: 10px;
         &:hover {
           background: url(#{$img-path}/delete-small.svg) center center no-repeat;
+        }
+      }
+      .btn-unseen {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $red;
+
+        &:hover {
+          background: red;
+        }
+      }
+      .btn-seen {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $gray-10;
+
+        &:hover {
+          background-color: $gray-15;
         }
       }
       .black-txt {
         position: absolute;
         top: -28px;
-        left: -76px;
+        left: -81px;
         background-color: $gray-90;
         border-radius: 2px;
         padding: 6px 0;
@@ -252,9 +273,6 @@
       justify-content: space-between;
       align-items: center;
       .copyicon-title {
-        padding-left: 26px;
-        background: url(#{$img-path}/group.svg) left center no-repeat;
-        background-size: 15px;
         color: $gray-90;
         font-size: 14px;
         @include Roboto-Bold;
@@ -294,7 +312,7 @@
 
     & .view-noti {
       text-decoration: underline;
-      color: blue;
+      color: $blue;
     }
   }
 }

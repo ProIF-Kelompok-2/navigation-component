@@ -91,7 +91,7 @@ module.exports = function configFactory (ops) {
          * with such configuration it just rewrites those URLs to point to
          * the original location of the fonts assets in
          * the library being build. */
-        test: /\.(ttf|eot|svg)$/,
+        test: /\.(ttf|eot|woff|woff2|svg)$/,
         include: [
           /src[/\\]assets[/\\]fonts/
         ],
@@ -105,13 +105,6 @@ module.exports = function configFactory (ops) {
         loader: 'url-loader'
       },
       {
-        // Match woff2 in addition to patterns like .woff?v=1.1.1.
-        test: /\.(woff|woff2)$/,
-        use: {
-          loader: 'url-loader'
-        }
-      },
-      {
         /* Loads JS and JSX moudles, and inlines SVG assets. */
         test: /\.(jsx?)$/,
         exclude: [
@@ -123,15 +116,6 @@ module.exports = function configFactory (ops) {
           babelrc: false,
           envName: ops.babelEnv,
           presets: ['topcoder-react-utils/config/babel/webpack']
-        }
-      },
-      {
-        test: /\.svg$/,
-        include: [
-          /src[/\\]assets[/\\]images/
-        ],
-        use: {
-          loader: 'url-loader'
         }
       },
       {

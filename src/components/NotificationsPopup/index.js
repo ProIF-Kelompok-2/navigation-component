@@ -5,11 +5,26 @@ import styles from './styles.module.scss'
 import EmptyNotifications from './EmptyNotifications'
 import NotificationList from './NotificationList'
 
-const NotificationsPopup = ({ open, onClose, emptyTitle, emptyText, notifications }) => (
+const NotificationsPopup = ({
+  open,
+  onClose,
+  emptyTitle,
+  emptyText,
+  notifications,
+  onNotificationMark,
+  onNotificationMarkAll,
+  onNotificationDismiss
+}) => (
   <div className={cn(styles['notifications-panel'], open && styles.open)}>
     <div className={styles.backdrop} onClick={onClose} />
     {notifications && notifications.length > 0 ? (
-      <NotificationList notifications={notifications} onClose={onClose} />
+      <NotificationList
+        notifications={notifications}
+        onClose={onClose}
+        onNotificationMark={onNotificationMark}
+        onNotificationMarkAll={onNotificationMarkAll}
+        onNotificationDismiss={onNotificationDismiss}
+      />
     ) : (
       <EmptyNotifications emptyTitle={emptyTitle} emptyText={emptyText} onClose={onClose} />
     )}
@@ -24,7 +39,10 @@ NotificationsPopup.defaultProps = {
       you don’t receive notifications. We’re actively adding
       new notifications. Read our <a href='/' className={styles.blueLink}>blog post</a> for more info
     </div>
-  )
+  ),
+  onNotificationDismiss: () => null,
+  onNotificationMark: () => null,
+  onNotificationMarkAll: () => null
 }
 
 NotificationsPopup.propTypes = {
@@ -41,7 +59,10 @@ NotificationsPopup.propTypes = {
    *   - tags {array}
    *   - timestamp {number}
   */
-  notifications: PropTypes.array
+  notifications: PropTypes.array,
+  onNotificationMark: PropTypes.func,
+  onNotificationMarkAll: PropTypes.func,
+  onNotificationDismiss: PropTypes.func
 }
 
 export default NotificationsPopup

@@ -17,7 +17,10 @@ const LoginNav = ({
   onMenuOpen,
   showNotification,
   profile,
-  authURLs
+  authURLs,
+  onNotificationMark,
+  onNotificationMarkAll,
+  onNotificationDismiss
 }) => {
   const [openNotifications, setOpenNotifications] = useState()
   const [openAccountMenu, setOpenAccountMenu] = useState()
@@ -84,6 +87,9 @@ const LoginNav = ({
         open={openNotifications}
         notifications={notifications}
         onClose={() => setOpenNotifications(false)}
+        onNotificationMarkAll={onNotificationMarkAll}
+        onNotificationMark={onNotificationMark}
+        onNotificationDismiss={onNotificationDismiss}
       />
       <AccountMenu
         profile={profile}
@@ -112,7 +118,10 @@ LoginNav.propTypes = {
   showNotification: PropTypes.bool,
   profile: PropTypes.shape(),
   switchText: PropTypes.shape(),
-  authURLs: PropTypes.shape()
+  authURLs: PropTypes.shape(),
+  onNotificationMark: PropTypes.func,
+  onNotificationMarkAll: PropTypes.func,
+  onNotificationDismiss: PropTypes.func
 }
 
 export default LoginNav
