@@ -33,11 +33,11 @@ Category.propTypes = {
   customClass: PropTypes.string
 }
 
-const Item = ({ item, onDismiss }) => {
+const Item = ({ item, onNotificationMark }) => {
   let rightMenu = null
 
-  if (!item.seen || !item.read) {
-    rightMenu = <div className={cn(styles['right-remove'], styles.dismissItem)} onClick={onDismiss}>
+  if (item.completed || !item.seen || !item.read) {
+    rightMenu = <div className={cn(styles['right-remove'], styles.dismissItem)} onClick={() => onNotificationMark(item.id)}>
       <div className={styles[item.completed ? 'btn-close' : (item.seen ? 'btn-seen' : 'btn-unseen')]} />
       <span className={styles['black-txt']}>
         {item.completed ? 'Dismiss Notification' : (item.seen ? 'Mark as Seen' : 'Mark as Read')}
@@ -67,7 +67,7 @@ const Item = ({ item, onDismiss }) => {
 
 Item.propTypes = {
   item: PropTypes.object,
-  onDismiss: PropTypes.func
+  onNotificationMark: PropTypes.func
 }
 
 const NotificationList = ({
@@ -83,6 +83,27 @@ const NotificationList = ({
 
   const completed = notifications.filter(noti => noti.completed)
   const incomplete = notifications.filter(noti => !noti.completed)
+
+  const completedPart = () => {
+    if (completed.length) {
+      const item = completed.map((item, i) => {
+        return (
+          <Item
+            item={item}
+            key={`noti-complete-${i}`}
+            onNotificationMark={onNotificationDismiss}
+          />
+        )
+      })
+
+      return [
+        <Category title='Completed Challenges' customClass={styles['text-uppercase']} />,
+        item
+      ]
+    }
+
+    return null
+  }
 
   return (
     <>
@@ -131,20 +152,13 @@ const NotificationList = ({
                   <Item
                     item={item}
                     key={`noti-incomplete-${i}`}
+                    onNotificationMark={onNotificationMark}
                   />
                 ))}
               </div>
             )
           })}
-          <Category title='Completed Challenges' customClass={styles['text-uppercase']} />
-          {completed.map((item, i) => {
-            return (
-              <Item
-                item={item}
-                key={`noti-complete-${i}`}
-              />
-            )
-          })}
+          {completedPart()}
         </Fragment>
 
         <div className={cn(styles['end-message'], styles.center)}>
